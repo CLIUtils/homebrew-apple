@@ -1,8 +1,8 @@
 class Libomp < Formula
   desc "Adds OpenMP libraries to use with the system Clang on macOS"
   homepage "https://openmp.llvm.org"
-  url "https://releases.llvm.org/4.0.1/openmp-4.0.1.src.tar.xz"
-  sha256 "ec693b170e0600daa7b372240a06e66341ace790d89eaf4a843e8d56d5f4ada4"
+  url "https://releases.llvm.org/5.0.1/openmp-5.0.1.src.tar.xz"
+  sha256 "adb635cdd2f9f828351b1e13d892480c657fb12500e69c70e007bddf0fca2653"
 
   depends_on "cmake" => :build
 
