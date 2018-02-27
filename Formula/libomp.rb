@@ -23,18 +23,23 @@ class Libomp < Formula
   end
 
   test do
-    (testpath/"test.c").write <<~EOS
+    (testpath/"test.cpp").write <<~EOS
       #include <omp.h>
+      #include <array>
       int main (int argc, char** argv) {
-        int nthreads, tid;
-        #pragma omp parallel private(nthreads, tid)
+        std::array<size_t,2> arr = {0,0};
+        #pragma omp parallel num_threads(2)
         {
-            tid = omp_get_thread_num();
+            size_t tid = omp_get_thread_num();
+            arr.at(tid) = tid + 1;
         }
-        return 0;
+        if(arr.at(0) == 1 && arr.at(1) == 2)
+            return 0;
+        else
+            return 1;
       }
       EOS
-    system ENV.cc, "-Xpreprocessor", "-fopenmp", "test.c", "-L#{lib}", "-lomp", "-o", "test"
-    system "./test"
+    system ENV.cxx, "-Werror", "-Xpreprocessor", "-fopenmp", "test.cpp", "-L#{lib}", "-lomp", "-o", "testout"
+    system "./testout"
   end
 end
