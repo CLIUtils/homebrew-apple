@@ -1,3 +1,8 @@
+# WARNING: THIS FORMULA IS NOW PART OF HOMEBRW
+
+## This tap is kept for information only. Please use brew install libomp.
+
+
 Add OpenMP for Apple Clang. Apple Clang now has support for OpenMP, but
 it has been disabled in the driver and is not included with High Sierra.
 It can be built and used, though; this formula will build it and
